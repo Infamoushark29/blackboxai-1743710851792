@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Time! | Neon Speedsters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        #gameCanvas {
+            display: block;
+            background: #0a0a1a;
+        }
+        .powerup-btn {
+            transition: all 0.2s;
+            box-shadow: 0 0 15px currentColor;
+        }
+        .powerup-btn:active {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="relative w-full h-screen">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Game UI -->
+        <div class="absolute top-0 left-0 right-0 p-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg" 
+                     class="w-12 h-12 rounded-full border-2 border-cyan-400 object-cover">
+                <div>
+                    <div class="text-white font-bold">AI Co-Pilot</div>
+                    <div class="h-2 w-32 bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full bg-cyan-500 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-white text-2xl font-bold">
+                Score: <span id="score">0</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 flex justify-center space-x-8">
+            <button class="powerup-btn w-16 h-16 rounded-full bg-purple-600 text-white text-2xl">
+                <i class="fas fa-bolt"></i>
+            </button>
+            <button class="powerup-btn w-16 h-16 rounded-full bg-blue-500 text-white text-2xl">
+                <i class="fas fa-feather-alt"></i>
+            </button>
+            <button class="powerup-btn w-16 h-16 rounded-full bg-pink-500 text-white text-2xl">
+                <i class="fas fa-rainbow"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
