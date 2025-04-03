@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize | Neon Speedsters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .color-option {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.7);
+        }
+        .color-option.selected {
+            border: 4px solid white;
+            box-shadow: 0 0 20px currentColor;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 text-center">Customize Your Hover Car</h1>
+        
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Color Selection -->
+            <div class="bg-gray-800 p-6 rounded-xl flex-1">
+                <h2 class="text-2xl font-semibold mb-4">Body Color</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="color-option h-16 rounded-full bg-red-500 selected" 
+                         onclick="selectColor('red')"></div>
+                    <div class="color-option h-16 rounded-full bg-blue-500" 
+                         onclick="selectColor('blue')"></div>
+                    <div class="color-option h-16 rounded-full bg-green-500" 
+                         onclick="selectColor('green')"></div>
+                    <div class="color-option h-16 rounded-full bg-purple-500" 
+                         onclick="selectColor('purple')"></div>
+                    <div class="color-option h-16 rounded-full bg-yellow-400" 
+                         onclick="selectColor('yellow')"></div>
+                    <div class="color-option h-16 rounded-full bg-pink-500" 
+                         onclick="selectColor('pink')"></div>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div class="bg-gray-800 p-6 rounded-xl flex-1 flex flex-col items-center">
+                <h2 class="text-2xl font-semibold mb-4">Preview</h2>
+                <div id="carPreview" class="w-48 h-32 bg-red-500 rounded-lg mb-4"></div>
+                <button onclick="saveCustomization()" 
+                        class="bg-cyan-600 hover:bg-cyan-500 px-6 py-2 rounded-full font-bold">
+                    Save Design
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectColor(color) {
+            document.querySelectorAll('.color-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+            document.getElementById('carPreview').style.backgroundColor = color;
+        }
+
+        function saveCustomization() {
+            const color = document.querySelector('.color-option.selected').style.backgroundColor;
+            localStorage.setItem('carColor', color);
+            alert('Design saved!');
+            window.location.href = 'game.html';
+        }
+    </script>
+</body>
+</html>
